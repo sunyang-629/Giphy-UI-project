@@ -11,6 +11,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <TrendingPage />,
+        //** I am be able to manage apis query by react-router, tanstack-query and RTK query  */
         loader: TrendingPageLoader,
       },
       {

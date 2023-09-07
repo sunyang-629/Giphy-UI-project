@@ -1,15 +1,20 @@
 import React from "react";
+//packages
 import { LoaderFunction, useLoaderData } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroller";
+import { isAxiosError } from "axios";
+import _ from "lodash";
+// axios
 import axiosInstance from "../../apis/axiosInstance";
+// types
 import {
   GifListResponseDTO,
   GifResponseType,
 } from "../../dto/gif-response.dto";
+// UI components
 import { GifList } from "../../components";
-import InfiniteScroll from "react-infinite-scroller";
+// hooks
 import useGifApi from "../../apis/hooks/useGifApi";
-import { isAxiosError } from "axios";
-import _ from "lodash";
 
 const TrendingPage: React.FC = () => {
   const { data } = useLoaderData() as GifListResponseDTO;
@@ -32,7 +37,7 @@ const TrendingPage: React.FC = () => {
       setCount(data.pagination.total_count);
     } catch (error) {
       if (isAxiosError(error)) {
-        //** display error here*/
+        //todo display error here*/
       }
     } finally {
       setIsLoading(false);
