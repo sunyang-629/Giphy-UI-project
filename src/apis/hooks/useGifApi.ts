@@ -17,7 +17,6 @@ const useGifApi = () => {
 
   const getSearchGifs = React.useCallback(
     async (queryString: string, config?: AxiosRequestConfig) => {
-      console.log("query");
       return get<GifListResponseDTO>(`search?${queryString}`, config);
     },
     [get]

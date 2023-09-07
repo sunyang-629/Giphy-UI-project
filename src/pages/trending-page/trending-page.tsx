@@ -6,7 +6,6 @@ import { GifList } from "../../components";
 
 const TrendingPage: React.FC = () => {
   const { data } = useLoaderData() as GifListResponseDTO;
-  console.log({ data });
   return (
     <div className="trending-page">
       <GifList list={data} />
