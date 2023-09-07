@@ -18,7 +18,7 @@ const TrendingPage: React.FC = () => {
 //** it will be handled in react router's error page */
 export const TrendingPageLoader: LoaderFunction = async () => {
   const result = await axiosInstance.get<GifListResponseDTO>(
-    `trending?api_key=br6HzEPclYcZ80WKzGzUjHy17In8Egkv`
+    `trending?api_key=${import.meta.env.VITE_GIPHY_API_KEY}`
   );
   return result.data;
 };
