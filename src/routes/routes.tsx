@@ -1,13 +1,10 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import { MainLayout } from "../layouts";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <Outlet />
-      </div>
-    ),
+    element: <MainLayout />,
     children: [
       {
         index: true,
