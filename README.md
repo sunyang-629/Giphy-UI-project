@@ -9,37 +9,42 @@
 
 1. Clone the Repository:
 
-```git clone https://github.com/sunyang-629/Giphy-UI-project.git
+```js
+git clone https://github.com/sunyang-629/Giphy-UI-project.git
 
 ```
 
 2. Navigate to the Project Directory
 
-```cd giphy-ui-project
+```js
+cd giphy-ui-project
 
 ```
 
 3. Install Dependencies:
 
-```npm install
+```js
+npm install
 
 ```
 
 or
 
-```yarn
-
+```js
+yarn;
 ```
 
 4. Run the Development Server
 
-```npm run dev
+```js
+npm run dev
 
 ```
 
 or
 
-```yarn dev
+```js
+yarn dev
 
 ```
 
@@ -47,3 +52,4 @@ or
    http://localhost:5173/
 
 6. env
+   The related env variables have been sent to Colin with this repo's address
