@@ -1,27 +1,49 @@
-# React + TypeScript + Vite
+# GIPHY UI PROJECT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- The UX is learnt from YouTube, there are 2 pages for the whole project. The default page is used for displaying trending GIFs, once the user input some search key and press 'ENTER', the page will be redicted to the search(results) page, the search key is contained in its URL as a query parameter.
+- The infinity Scroll is implemented by 'react-infinity-scroller'
+- Besides react-router I use to fetch data on the default page, I do also have experiences on react-query/redux RTK to fetch/mutate data through calling APIs.
+- Some todos have been Commanded in the codes.
 
-Currently, two official plugins are available:
+## How to run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the Repository:
 
-## Expanding the ESLint configuration
+```git clone https://github.com/sunyang-629/Giphy-UI-project.git
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Navigate to the Project Directory
+
+```cd giphy-ui-project
+
+```
+
+3. Install Dependencies:
+
+```npm install
+
+```
+
+or
+
+```yarn
+
+```
+
+4. Run the Development Server
+
+```npm run dev
+
+```
+
+or
+
+```yarn dev
+
+```
+
+5. Access the Application
+   http://localhost:5173/
+
+6. env
