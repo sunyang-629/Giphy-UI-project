@@ -17,7 +17,7 @@ const SearchInput: React.FC = () => {
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && searchKey.length !== 0) {
       navigate(`/results?search_query=${searchKey}`);
     }
   };
