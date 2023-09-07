@@ -5,9 +5,10 @@ import { GifCard } from "../..";
 
 export interface IGifListProps {
   list: GifResponseType[];
+  isLoading: boolean;
 }
 
-const GifList: React.FC<IGifListProps> = ({ list }) => {
+const GifList: React.FC<IGifListProps> = ({ list, isLoading }) => {
   return (
     <Grid container>
       {list.map((gif) => (
@@ -19,7 +20,7 @@ const GifList: React.FC<IGifListProps> = ({ list }) => {
           spacing={2}
           sx={{ display: "flex", justifyContent: "center", marginY: 2 }}
         >
-          <GifCard gif={gif} />
+          <GifCard gif={gif} isLoading={isLoading} />
         </Grid>
       ))}
     </Grid>

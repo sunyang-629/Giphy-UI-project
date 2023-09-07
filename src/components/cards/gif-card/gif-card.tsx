@@ -5,14 +5,15 @@ import CardContent from "@mui/joy/CardContent";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
-// import { Skeleton } from "@mui/joy";
+import { Skeleton } from "@mui/joy";
 import { GifResponseType } from "../../../dto/gif-response.dto";
 
 interface IGifCardProps {
   gif: GifResponseType;
+  isLoading: boolean;
 }
 
-const GifCard: React.FC<IGifCardProps> = ({ gif }) => {
+const GifCard: React.FC<IGifCardProps> = ({ gif, isLoading }) => {
   return (
     <Card sx={{ width: 320 }}>
       <div style={{ height: "1rem" }}>
@@ -27,20 +28,18 @@ const GifCard: React.FC<IGifCardProps> = ({ gif }) => {
         </IconButton>
       </div>
       <AspectRatio minHeight="120px" maxHeight="200px">
-        {/* <Skeleton variant="overlay" loading={isLoading}> */}
-        <img
-          src={gif.images.original.url}
-          srcSet={gif.images.original.url}
-          loading="lazy"
-          alt={gif.id}
-        />
-        {/* </Skeleton> */}
+        <Skeleton variant="overlay" loading={isLoading}>
+          <img
+            src={gif.images.original.url}
+            srcSet={gif.images.original.url}
+            loading="lazy"
+            alt={gif.id}
+          />
+        </Skeleton>
       </AspectRatio>
       <CardContent>
         <Typography level="body-sm">
-          {/* <Skeleton loading={isLoading}> */}
-          {gif.title}
-          {/* </Skeleton> */}
+          <Skeleton loading={isLoading}>{gif.title}</Skeleton>
         </Typography>
       </CardContent>
     </Card>

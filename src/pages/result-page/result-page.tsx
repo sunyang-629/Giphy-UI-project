@@ -11,6 +11,7 @@ const ResultPage: React.FC = () => {
   const { getSearchGifs } = useGifApi();
   const [gifList, setGifList] = React.useState<GifResponseType[]>([]);
   const [count, setCount] = React.useState<number>(0);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const queryString = React.useMemo(
     () => `q=${q}&api_key=${import.meta.env.VITE_GIPHY_API_KEY}`,
@@ -20,6 +21,7 @@ const ResultPage: React.FC = () => {
   const handleFetchMore = async (page: number) => {
     //** avoid repulicated results with initial rendering  */
     if (page > 1) {
+      setIsLoading(true);
       try {
         const { data } = await getSearchGifs(
           `${queryString}&offset=${(page - 1) * 50}`
@@ -28,8 +30,10 @@ const ResultPage: React.FC = () => {
         setCount(data.pagination.total_count);
       } catch (error) {
         if (isAxiosError(error)) {
-          //display error here
+          //** display error here*/
         }
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -57,7 +61,7 @@ const ResultPage: React.FC = () => {
         loadMore={handleFetchMore}
         hasMore={gifList.length <= count}
       >
-        <GifList list={gifList} />
+        <GifList list={gifList} isLoading={isLoading} />
       </InfiniteScroll>
     </div>
   );
