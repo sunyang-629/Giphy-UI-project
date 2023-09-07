@@ -11,7 +11,6 @@ const ResultPage: React.FC = () => {
   const { getSearchGifs } = useGifApi();
   const [gifList, setGifList] = React.useState<GifResponseType[]>([]);
   const [count, setCount] = React.useState<number>(0);
-  console.log(gifList.length, count);
 
   const queryString = React.useMemo(
     () => `q=${q}&api_key=${import.meta.env.VITE_GIPHY_API_KEY}`,
@@ -19,6 +18,7 @@ const ResultPage: React.FC = () => {
   );
 
   const handleFetchMore = async (page: number) => {
+    //** avoid repulicated results with initial rendering  */
     if (page > 1) {
       try {
         const { data } = await getSearchGifs(

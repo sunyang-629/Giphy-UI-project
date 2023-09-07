@@ -32,7 +32,7 @@ const GifCard: React.FC<IGifCardProps> = ({ gif }) => {
           src={gif.images.original.url}
           srcSet={gif.images.original.url}
           loading="lazy"
-          alt={gif.title}
+          alt={gif.id}
         />
         {/* </Skeleton> */}
       </AspectRatio>
