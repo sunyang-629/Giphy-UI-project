@@ -11,6 +11,10 @@ const ResultPage: React.FC = () => {
   const { getSearchGifs } = useGifApi();
   const [gifList, setGifList] = React.useState<GifResponseType[]>([]);
   const [count, setCount] = React.useState<number>(0);
+  //todo it might affect the cards which have been rendered on the page /
+  //todo I think I could push some fake gifs in the list which will render with skeleton /
+  //todo once real data are fetched, using them to replace the fake ones/
+  //todo then wrap gitCard component with React.memo to avoid unnecessary re-rendering /
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const queryString = React.useMemo(
@@ -30,7 +34,7 @@ const ResultPage: React.FC = () => {
         setCount(data.pagination.total_count);
       } catch (error) {
         if (isAxiosError(error)) {
-          //** display error here*/
+          //todo display error here*/
         }
       } finally {
         setIsLoading(false);
@@ -45,7 +49,7 @@ const ResultPage: React.FC = () => {
       setCount(data.pagination.total_count);
     } catch (error) {
       if (isAxiosError(error)) {
-        //display error here
+        //todo display error here/
       }
     }
   }, [getSearchGifs, queryString]);
