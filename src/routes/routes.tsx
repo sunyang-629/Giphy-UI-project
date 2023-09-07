@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layouts";
+import { TrendingPage } from "../pages";
 
 const router = createBrowserRouter([
   {
@@ -8,7 +9,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>trending</div>,
+        element: <TrendingPage />,
       },
       {
         path: "results",
