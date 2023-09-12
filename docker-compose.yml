@@ -4,7 +4,7 @@ services:
     build: .
     container_name: giphy-ui-project_c
     ports:
-      - "5173:5173"
+      - "80:5173"
     volumes:
       - .:/app
       - /app/node_modules
