@@ -34,7 +34,7 @@ const FavouritePage: React.FC = () => {
 
   return (
     <div className="results-page">
-      <GifList list={gifList} isLoading={false} />
+      <GifList list={gifList} />
     </div>
   );
 };

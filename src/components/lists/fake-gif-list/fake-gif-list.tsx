@@ -2,17 +2,24 @@ import React from "react";
 import { GifResponseType } from "../../../dto/gif-response.dto";
 import { Grid } from "@mui/joy";
 import { GifCard } from "../..";
+import uniqueId from "lodash/uniqueId";
 
-export interface IGifListProps {
-  list: GifResponseType[];
-}
+const fakeGifs: GifResponseType[] = Array(6).fill({
+  id: "",
+  title: "fake gif‘s title to take space",
+  images: {
+    original: {
+      url: "",
+    },
+  },
+});
 
-const GifList: React.FC<IGifListProps> = ({ list }) => {
+const FakeGifList: React.FC = () => {
   return (
     <Grid container>
-      {list.map((gif) => (
+      {fakeGifs.map((gif) => (
         <Grid
-          key={gif.id}
+          key={uniqueId()}
           xs={12}
           md={6}
           lg={4}
@@ -26,4 +33,4 @@ const GifList: React.FC<IGifListProps> = ({ list }) => {
   );
 };
 
-export default GifList;
+export default FakeGifList;

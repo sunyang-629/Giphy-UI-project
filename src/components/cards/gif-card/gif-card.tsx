@@ -10,10 +10,9 @@ import LikeHeart from "./heart";
 
 interface IGifCardProps {
   gif: GifResponseType;
-  isLoading: boolean;
 }
 
-const GifCard: React.FC<IGifCardProps> = ({ gif, isLoading }) => {
+const GifCard: React.FC<IGifCardProps> = ({ gif }) => {
   const [list, updateLikeList] = useLocalStorage<string[]>(
     "favourite_gif_list",
     []
@@ -44,7 +43,7 @@ const GifCard: React.FC<IGifCardProps> = ({ gif, isLoading }) => {
         <LikeHeart onClick={handleClick} isLiked={like} />
       </div>
       <AspectRatio minHeight="120px" maxHeight="200px">
-        <Skeleton variant="overlay" loading={isLoading}>
+        <Skeleton variant="overlay" loading={!gif.id}>
           <img
             src={gif.images.original.url}
             srcSet={gif.images.original.url}
@@ -55,11 +54,13 @@ const GifCard: React.FC<IGifCardProps> = ({ gif, isLoading }) => {
       </AspectRatio>
       <CardContent>
         <Typography level="body-sm">
-          <Skeleton loading={isLoading}>{gif.title}</Skeleton>
+          <Skeleton loading={!gif.id}>{gif.title}</Skeleton>
         </Typography>
       </CardContent>
     </Card>
   );
 };
 
-export default GifCard;
+const GifCardMemo = React.memo(GifCard);
+
+export default GifCardMemo;

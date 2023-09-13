@@ -20,12 +20,10 @@ const TrendingPage: React.FC = () => {
   const { data } = useLoaderData() as GifListResponseDTO;
   const [gifList, setGifList] = React.useState<GifResponseType[]>(data);
   const [count, setCount] = React.useState<number>(50);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const { getTrendingGifs } = useGifApi();
 
   const handleFetchMore = async (page: number) => {
-    setIsLoading(true);
     try {
       const { data } = await getTrendingGifs(
         `api_key=${import.meta.env.VITE_GIPHY_API_KEY}&&offset=${page * 50}`
@@ -40,7 +38,7 @@ const TrendingPage: React.FC = () => {
         //todo display error here*/
       }
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
@@ -51,7 +49,7 @@ const TrendingPage: React.FC = () => {
         loadMore={handleFetchMore}
         hasMore={gifList.length <= count || true}
       >
-        <GifList list={gifList} isLoading={isLoading} />
+        <GifList list={gifList} />
       </InfiniteScroll>
     </div>
   );
