@@ -15,6 +15,7 @@ import {
 import { GifList } from "../../components";
 // hooks
 import useGifApi from "../../apis/hooks/useGifApi";
+import FakeGifList from "../../components/lists/fake-gif-list/fake-gif-list";
 
 const TrendingPage: React.FC = () => {
   const { data } = useLoaderData() as GifListResponseDTO;
@@ -48,6 +49,7 @@ const TrendingPage: React.FC = () => {
         pageStart={0}
         loadMore={handleFetchMore}
         hasMore={gifList.length <= count || true}
+        loader={<FakeGifList />}
       >
         <GifList list={gifList} />
       </InfiniteScroll>
