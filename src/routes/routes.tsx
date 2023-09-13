@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layouts";
-import { ResultPage, TrendingPage } from "../pages";
+import { FavouritePage, ResultPage, TrendingPage } from "../pages";
 import { TrendingPageLoader } from "../pages/trending-page/trending-page";
 
 const router = createBrowserRouter([
@@ -17,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "results",
         element: <ResultPage />,
+      },
+      {
+        path: "favourites",
+        element: <FavouritePage />,
       },
     ],
   },

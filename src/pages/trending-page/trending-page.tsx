@@ -3,7 +3,7 @@ import React from "react";
 import { LoaderFunction, useLoaderData } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroller";
 import { isAxiosError } from "axios";
-import _ from "lodash";
+import uniqBy from "lodash/uniqBy";
 // axios
 import axiosInstance from "../../apis/axiosInstance";
 // types
@@ -32,7 +32,7 @@ const TrendingPage: React.FC = () => {
       );
       //** duplicated results existed in the trending api */
       //** filter them by their ids */
-      const gifUniq = _.uniqBy([...gifList, ...data.data], "id");
+      const gifUniq = uniqBy([...gifList, ...data.data], "id");
       setGifList(gifUniq);
       setCount(data.pagination.total_count);
     } catch (error) {

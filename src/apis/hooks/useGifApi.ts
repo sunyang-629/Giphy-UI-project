@@ -19,7 +19,14 @@ const useGifApi = () => {
     [get]
   );
 
-  return { getTrendingGifs, getSearchGifs };
+  const getLikeGifs = React.useCallback(
+    async (queryString: string, config?: AxiosRequestConfig) => {
+      return get<GifListResponseDTO>(`?${queryString}`, config);
+    },
+    [get]
+  );
+
+  return { getTrendingGifs, getSearchGifs, getLikeGifs };
 };
 
 export default useGifApi;

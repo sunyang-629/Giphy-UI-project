@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { HomeButton, SearchInput } from "../../components";
+import { FavouriteButton, HomeButton, SearchInput } from "../../components";
 
 const MainLayout: React.FC = () => {
   return (
@@ -15,6 +15,7 @@ const MainLayout: React.FC = () => {
       >
         <SearchInput />
         <HomeButton />
+        <FavouriteButton />
       </div>
       <Outlet />
     </main>
