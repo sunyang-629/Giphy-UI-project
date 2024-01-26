@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  //todo will set the base URL as an env variable /
   baseURL: import.meta.env.VITE_GIPHY_API_URL,
 });
 

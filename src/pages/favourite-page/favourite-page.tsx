@@ -1,14 +1,13 @@
 import React from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useGifApi from "../../apis/hooks/useGifApi";
-import { isAxiosError } from "axios";
 import { GifResponseType } from "../../dto/gif-response.dto";
 import { GifList } from "../../components";
+import { useQuery } from "react-query";
 
 const FavouritePage: React.FC = () => {
+  // TODO could move all below into a custrom hook
   const [idList] = useLocalStorage<string[]>("favourite_gif_list", []);
-  const [gifList, setGifList] = React.useState<GifResponseType[]>([]);
-
   const queryString = React.useMemo(
     () =>
       `api_key=${import.meta.env.VITE_GIPHY_API_KEY}&ids=${idList?.join(",")}`,
@@ -17,20 +16,17 @@ const FavouritePage: React.FC = () => {
 
   const { getLikeGifs } = useGifApi();
 
-  const fetchAllLikes = React.useCallback(async () => {
-    try {
+  const {
+    // isLoading,
+    // error,
+    data: gifList = [],
+  } = useQuery<GifResponseType[], Error>("likeGifs", async () => {
+    if (idList?.length !== 0) {
       const { data } = await getLikeGifs(queryString);
-      setGifList(data.data);
-    } catch (error) {
-      if (isAxiosError(error)) {
-        //todo display error here/
-      }
+      return data.data;
     }
-  }, [getLikeGifs, queryString]);
-
-  React.useEffect(() => {
-    if (idList?.length !== 0) fetchAllLikes();
-  }, [fetchAllLikes, idList]);
+    return [];
+  });
 
   return (
     <div className="results-page">

@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layouts";
 import { FavouritePage, ResultPage, TrendingPage } from "../pages";
-import { TrendingPageLoader } from "../pages/trending-page/trending-page";
+// import { lazy } from "react";
+// const LazyFavouritePage = lazy(() => import("../pages/favourite-page"))
 
 const router = createBrowserRouter([
   {
@@ -11,8 +12,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <TrendingPage />,
-        //** I am be able to manage apis query by react-router, tanstack-query and RTK query  */
-        loader: TrendingPageLoader,
       },
       {
         path: "results",
